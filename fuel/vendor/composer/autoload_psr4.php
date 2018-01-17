@@ -8,5 +8,6 @@ $baseDir = dirname(dirname($vendorDir));
 return array(
     'phpseclib\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Fuel\\Upload\\' => array($vendorDir . '/fuelphp/upload/src'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );
