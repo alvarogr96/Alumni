@@ -12,7 +12,7 @@ class Messages
         ), array('id'), false, 'InnoDB', 'utf8_unicode_ci',
 		    array(
 		        array(
-		            'constraint' => 'foreignKeyFromMessagesToUsers',
+		            'constraint' => 'foreignKeyFromMessagesToUserSender',
 		            'key' => 'id_user_send',
 		            'reference' => array(
 		                'table' => 'users',
@@ -22,7 +22,7 @@ class Messages
 		            'on_delete' => 'RESTRICT'
 		        ),
 		        array(
-		            'constraint' => 'foreignKeyFromMessagesToUsers',
+		            'constraint' => 'foreignKeyFromMessagesToUserReceive',
 		            'key' => 'id_user_receives',
 		            'reference' => array(
 		                'table' => 'users',
