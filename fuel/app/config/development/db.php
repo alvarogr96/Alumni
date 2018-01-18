@@ -6,7 +6,7 @@
 return array(
 	'default' => array(
 		'connection'  => array(
-			'dsn'        => 'mysql:host=h2744356.stratoserver.net;dbname=alumni',
+			'dsn'        => 'mysql:host=localhost;dbname=alumni',
 			'username'   => 'alumni',
 			'password'   => 'PN0hVOFh42lmgapw',
 		),
