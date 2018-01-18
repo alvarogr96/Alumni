@@ -115,7 +115,7 @@ class Controller_Users extends Controller_Rest
                     $token = JWT::encode($dataToken, $this->key);
                     return $this->response(array(
                         'Login Correcto' => 200,
-                        ['token' => $token, 'name' => $username]
+                        ['token' => $token, 'username' => $username]
                 ));
                 }
                 else
