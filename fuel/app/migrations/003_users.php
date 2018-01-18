@@ -1,21 +1,21 @@
 <?php 
 namespace Fuel\Migrations;
-class Usuarios
+class Users
 {
     function up()
     {
-        \DBUtil::create_table('usuarios', array(
+        \DBUtil::create_table('users', array(
             'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'nombre' => array('type' => 'varchar', 'constraint' => 100),
+            'name' => array('type' => 'varchar', 'constraint' => 100),
             'email' => array('type' => 'varchar', 'constraint' => 100),
             'password' => array('type' => 'varchar', 'constraint' => 100),
-            'foto_perfil' => array('type' => 'varchar', 'constraint' => 100),
+            'image_profile' => array('type' => 'varchar', 'constraint' => 100),
             'id_rol' => array('type' => 'int', 'constraint' => 11),
-            'id_lista' => array('type' => 'int', 'constraint' => 11),
+            'id_list' => array('type' => 'int', 'constraint' => 11),
         ), array('id'), false, 'InnoDB', 'utf8_unicode_ci',
 		    array(
 		        array(
-		            'constraint' => 'claveAjenaUsuariosARoles',
+		            'constraint' => 'foreignKeyFromUsersToRoles',
 		            'key' => 'id_rol',
 		            'reference' => array(
 		                'table' => 'roles',
@@ -25,10 +25,10 @@ class Usuarios
 		            'on_delete' => 'RESTRICT'
 		        ),
 		        array(
-		            'constraint' => 'claveAjenaUsuariosAListas',
-		            'key' => 'id_lista',
+		            'constraint' => 'foreignKeyFromUsersToLists',
+		            'key' => 'id_list',
 		            'reference' => array(
-		                'table' => 'listas',
+		                'table' => 'lists',
 		                'column' => 'id',
 		            ),
 		            'on_update' => 'CASCADE',
@@ -39,6 +39,6 @@ class Usuarios
     }
     function down()
     {
-       \DBUtil::drop_table('usuarios');
+       \DBUtil::drop_table('users');
     }
 }

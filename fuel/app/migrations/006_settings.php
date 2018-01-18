@@ -1,25 +1,25 @@
 <?php 
 namespace Fuel\Migrations;
 
-class Ajustes
+class Settings
 {
 
     function up()
     {
-        \DBUtil::create_table('ajustes', array(
+        \DBUtil::create_table('settings', array(
             'id' => array('type' => 'int', 'constraint' => 5, 'auto_increment' => true),
-            'sonido' => array('type' => 'varchar', 'constraint' => 100),
-            'notificaciones' => array('type' => 'varchar', 'constraint' => 100),
-            'id_usuario' => array('type' => 'int', 'constraint' => 5),
+            'sound' => array('type' => 'varchar', 'constraint' => 100),
+            'notifications' => array('type' => 'varchar', 'constraint' => 100),
+            'id_user' => array('type' => 'int', 'constraint' => 5),
 
             
         ), array('id'), false, 'InnoDB', 'utf8_unicode_ci',
             array(
                 array(
-                    'constraint' => 'claveAjenaAjustesAUsuarios',
-                    'key' => 'id_usuario',
+                    'constraint' => 'foreignKeyFromSettingsToUsers',
+                    'key' => 'id_user',
                     'reference' => array(
-                        'table' => 'usuarios',
+                        'table' => 'users',
                         'column' => 'id',
                     ),
                     'on_update' => 'CASCADE',
@@ -31,6 +31,6 @@ class Ajustes
 
     function down()
     {
-       \DBUtil::drop_table('ajustes');
+       \DBUtil::drop_table('settings');
     }
 }

@@ -8,7 +8,7 @@ class Roles
     {
         \DBUtil::create_table('roles', array(
             'id' => array('type' => 'int', 'constraint' => 5, 'auto_increment' => true),
-            'tipo' => array('type' => 'varchar', 'constraint' => 100),
+            'type' => array('type' => 'varchar', 'constraint' => 100),
             
             
         ), array('id'));

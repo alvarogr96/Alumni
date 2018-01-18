@@ -1,31 +1,31 @@
 <?php 
 namespace Fuel\Migrations;
-class Mensajes
+class Messages
 {
     function up()
     {
-        \DBUtil::create_table('mensajes', array(
+        \DBUtil::create_table('messages', array(
             'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'mensaje' => array('type' => 'varchar', 'constraint' => 100),
-            'id_usuario_envia' => array('type' => 'int', 'constraint' => 11),
-            'id_usuario_recibe' => array('type' => 'int', 'constraint' => 11),
+            'message' => array('type' => 'varchar', 'constraint' => 100),
+            'id_user_send' => array('type' => 'int', 'constraint' => 11),
+            'id_user_receives' => array('type' => 'int', 'constraint' => 11),
         ), array('id'), false, 'InnoDB', 'utf8_unicode_ci',
 		    array(
 		        array(
-		            'constraint' => 'claveAjenaMensajesAUsuariosEnvia',
-		            'key' => 'id_usuario_envia',
+		            'constraint' => 'foreignKeyFromMessagesToUsers',
+		            'key' => 'id_user_send',
 		            'reference' => array(
-		                'table' => 'usuarios',
+		                'table' => 'users',
 		                'column' => 'id',
 		            ),
 		            'on_update' => 'CASCADE',
 		            'on_delete' => 'RESTRICT'
 		        ),
 		        array(
-		            'constraint' => 'claveAjenaMensajesAUsuariosRecibe',
-		            'key' => 'id_usuario_recibe',
+		            'constraint' => 'foreignKeyFromMessagesToUsers',
+		            'key' => 'id_user_receives',
 		            'reference' => array(
-		                'table' => 'usuarios',
+		                'table' => 'users',
 		                'column' => 'id',
 		            ),
 		            'on_update' => 'CASCADE',
@@ -36,6 +36,6 @@ class Mensajes
     }
     function down()
     {
-       \DBUtil::drop_table('mensajes');
+       \DBUtil::drop_table('messages');
     }
 }

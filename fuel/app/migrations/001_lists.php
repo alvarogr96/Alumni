@@ -1,14 +1,14 @@
 <?php 
 namespace Fuel\Migrations;
 
-class Listas
+class Lists
 {
 
     function up()
     {
-        \DBUtil::create_table('listas', array(
+        \DBUtil::create_table('lists', array(
             'id' => array('type' => 'int', 'constraint' => 5, 'auto_increment' => true),
-            'titulo' => array('type' => 'varchar', 'constraint' => 100),
+            'title' => array('type' => 'varchar', 'constraint' => 100),
             
             
         ), array('id'));
@@ -16,6 +16,6 @@ class Listas
 
     function down()
     {
-       \DBUtil::drop_table('listas');
+       \DBUtil::drop_table('lists');
     }
 }

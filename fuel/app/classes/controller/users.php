@@ -9,7 +9,7 @@ class Controller_Users extends Controller_Rest
    // private $key = "9adsfssads9sa97ass7as97as7d9";
 
         try {
-            if ( empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['password']) ) 
+            if ( empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) ) 
             {
                 $json = $this->response(array(
                     'code' => 400,
@@ -20,12 +20,12 @@ class Controller_Users extends Controller_Rest
             
            $input = $_POST;
             $user = new Model_Users();
-            $user->nombre = $input['nombre'];
+            $user->username = $input['username'];
             $user->email = $input['email'];
             $user->password = $input['password'];
-            $user->foto_perfil = 'alvaroiocld';
+            $user->image_profile = 'alvaroiocld';
             $user->id_rol = 2;
-            $user->id_lista = 1;
+            $user->id_list = 1;
             $user->save();
             $json = $this->response(array(
                 'code' => 200,
@@ -64,7 +64,7 @@ class Controller_Users extends Controller_Rest
     public function post_delete()
     {
         $user = Model_Users::find($_POST['id']);
-        $userName = $user->nombre;
+        $userName = $user->username;
         $user->delete();
         $json = $this->response(array(
             'code' => 200,
@@ -82,7 +82,7 @@ class Controller_Users extends Controller_Rest
  
     public function get_login()
     {
-        if ( empty($_POST['nombre']) || empty($_POST['password']) ) 
+        if ( empty($_POST['username']) || empty($_POST['password']) ) 
             {
                 $json = $this->response(array(
                     'code' => 400,
@@ -93,7 +93,7 @@ class Controller_Users extends Controller_Rest
 
         $users = Model_Users::find('all', array(
             'where' => array(
-                array('nombre', $_POST['nombre']),
+                array('username', $_POST['username']),
                 array('password', $_POST['password']),
             )
         ));
