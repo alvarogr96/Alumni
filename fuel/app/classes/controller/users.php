@@ -5,16 +5,12 @@ use Firebase\JWT\JWT;
 class Controller_Users extends Controller_Rest
 {
 
-    public function post_config()
-    {
-        
-    }
-
+    private $key = "dejr334irj3irji3r4j3rji3jiSj3jri";
 
 
     public function post_create()
     {
-   // private $key = "9adsfssads9sa97ass7as97as7d9";
+    
 
         try {
             if ( empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) ) 
@@ -89,51 +85,52 @@ class Controller_Users extends Controller_Rest
     }
  
     public function get_login()
-    {
-       try {
-            $input = $_GET;
-            $users = Model_Users::find('all', array(
-                'where' => array(
-                    array('username', $input['username']),
-                )
-            ));
-            // https://localhost:8888/userfuelphp/public/users/login.json?username=julio&password=1234
-            
-            if(!empty($users)){
-                foreach ($users as $key => $value) {
-                  $id = $users[$key]->id;
-                  $username = $users[$key]->name;
-                  $password = $users[$key]->password;
+    { try {
+                $input = $_GET;
+                $users = Model_Users::find('all', array(
+                    'where' => array(
+                        array('username', $input['username']),array('password', $input['password'])
+                    )
+                ));
+                if ( ! empty($users) )
+                {
+                    foreach ($users as $key => $value)
+                    {
+                        $id = $users[$key]->id;
+                        $username = $users[$key]->username;
+                        $password = $users[$key]->password;
+                    }
                 }
-            } 
-            else {
-                return $this->response(array(
-                    'ErrorAut' => 400
+                else
+                {
+                    return $this->response(array('Datos incorrectos' => 400));
+                }
+                if ($username == $input['username'] and $password == $input['password'])
+                {
+                    $dataToken = array(
+                        "id" => $id,
+                        "username" => $username,
+                        "password" => $password
+                    );
+                    $token = JWT::encode($dataToken, $this->key);
+                    return $this->response(array(
+                        'Login Correcto' => 200,
+                        ['token' => $token, 'name' => $username]
                 ));
+                }
+                else
+                {
+                return $this->response(array('Datos incorrectos' => 400));
+                }
             }
-            
-            if ($username == $input['username'] && $password == $input['password']){
-                $datatoken = array(
-                    'id' => $id,
-                    'name' => $username,
-                    'password' => $password
-                );
-                $token = JWT::encode($datatoken,$this->key);
-                return $this->response(array(
-                    'LoginBienHecho' => 200,
-                     ['token' => $token, 'username' => $username]
-                ));
-            }
-            else {
-                return $this->response(array(
-                    'ErrorAut' => 400
-                ));
-            }
+        catch (Exception $e)
+        {
+            $json = $this->response(array(
+                'code' => 500,
+                'message' => 'Error de servidor'
+                //'message' => $e->getMessage(),
+            ));
+            return $json;
         }
-    catch (Exception $e){
-        return $this->response(array(
-            'ErrorServ' => 500
-        ));
-    }
-    }
+    }                
 }
