@@ -4,15 +4,14 @@
  */
 
 return array(
-	'default' => array(
+	/*'default' => array(
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;dbname=alumni',
 			'username'   => 'alumni',
 			'password'   => 'PN0hVOFh42lmgapw',
 		),
-	),
-);
-/*
+	),*/
+
 	'default' => array(
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;dbname=alumni',
@@ -20,4 +19,6 @@ return array(
 			'password'   => 'cev',
 		),
 	),
-	*/
+	
+
+);
