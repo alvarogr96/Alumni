@@ -83,6 +83,21 @@ class Controller_Users extends Controller_Rest
         $users = Model_Users::find('all');
         return $this->response(Arr::reindex($users));
     }
+
+    public function post_changePass()
+    {
+        $input = $_POST;
+        $users = new Model_Users();
+        $users = Model_Users::find($_POST['id']);
+        $users->password = $input['password'];
+        $users->save();
+        $json = $this->response(array(
+            'code' => 200,
+            'message' => 'pass modificada',
+            'data' => ['userpass' => $input['password']]
+        ));
+        return $json;
+    }
  
     public function get_login()
     { try {
