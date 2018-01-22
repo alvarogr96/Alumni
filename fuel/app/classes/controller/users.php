@@ -21,8 +21,6 @@ class Controller_Users extends Controller_Rest
                 return $json;
             }
 
-            if (){}
-            
             $input = $_POST;
             $user = new Model_Users();
             $user->username = $input['username'];
@@ -34,13 +32,10 @@ class Controller_Users extends Controller_Rest
             $user->save();
             $json = $this->response(array(
                 'code' => 200,
-                'message' => 'usuario creado',
+                'message' => 'Usuario creado',
                 'data' => $user
             ));
             return $json;
-
-
-
 
         } 
         catch (Exception $e) 
@@ -51,9 +46,8 @@ class Controller_Users extends Controller_Rest
             ));
             return $json;
         }
-
-        
     }
+        
     public function post_recoverPass()
     {
         if ( empty($_POST['email'])) 
