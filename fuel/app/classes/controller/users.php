@@ -10,9 +10,8 @@ class Controller_Users extends Controller_Rest
 
     public function post_create()
     {
-    
-
         try {
+            
             if ( empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) ) 
             {
                 $json = $this->response(array(
@@ -21,8 +20,10 @@ class Controller_Users extends Controller_Rest
                 ));
                 return $json;
             }
+
+            if (){}
             
-           $input = $_POST;
+            $input = $_POST;
             $user = new Model_Users();
             $user->username = $input['username'];
             $user->email = $input['email'];
@@ -100,7 +101,8 @@ class Controller_Users extends Controller_Rest
     }
  
     public function get_login()
-    { try {
+    { 
+        try {
                 $input = $_GET;
                 $users = Model_Users::find('all', array(
                     'where' => array(
@@ -118,7 +120,7 @@ class Controller_Users extends Controller_Rest
                 }
                 else
                 {
-                    return $this->response(array('Datos incorrectos' => 400));
+                    return $this->response(array('Login incorrecto' => 400));
                 }
                 if ($username == $input['username'] and $password == $input['password'])
                 {
@@ -135,7 +137,7 @@ class Controller_Users extends Controller_Rest
                 }
                 else
                 {
-                return $this->response(array('Datos incorrectos' => 400));
+                return $this->response(array('Los datos no coinciden' => 400));
                 }
             }
         catch (Exception $e)
