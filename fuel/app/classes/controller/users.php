@@ -50,14 +50,37 @@ class Controller_Users extends Controller_Rest
         
     public function post_recoverPass()
     {
-        if ( empty($_POST['email'])) 
+        try {
+
+            if ( empty($_POST['email'])) 
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' =>  'Falta algun campo'
+                    'message' =>  'Existen campos vacíos'
                 ));
                 return $json;
             }
+
+            // Validación de e-mail
+            $input = $_POST;
+            $users = Model_Users::find('all', array(
+                'where' => array(
+                    array('email', $input['email'])
+                )
+            ));
+
+            /*$input = $_POST;
+            $users = new Model_Users();
+            $users = Model_Users::find($_POST['email']);
+            $users->password = $input['password'];
+            $users->save();
+            $json = $this->response(array(
+                'code' => 200,
+                'message' => 'Contraseña modificada',
+                'data' => ['Contraseña' => $input['password']]
+            ));
+            return $json;*/
+        }
     }
 
     public function post_delete()
@@ -79,30 +102,25 @@ class Controller_Users extends Controller_Rest
         return $this->response(Arr::reindex($users));
     }
 
-    public function post_changePass()
-    {
-        $input = $_POST;
-        $users = new Model_Users();
-        $users = Model_Users::find($_POST['id']);
-        $users->password = $input['password'];
-        $users->save();
-        $json = $this->response(array(
-            'code' => 200,
-            'message' => 'pass modificada',
-            'data' => ['userpass' => $input['password']]
-        ));
-        return $json;
-    }
- 
     public function get_login()
     { 
         try {
+
+                if ( empty($_GET['username']) || empty($_GET['password']))
+                {
+                    return $this->response(array(
+                        'code' => 400,
+                        'message' => 'Existen campos vacíos'
+                    ));
+                }
+
                 $input = $_GET;
                 $users = Model_Users::find('all', array(
                     'where' => array(
                         array('username', $input['username']),array('password', $input['password'])
                     )
                 ));
+
                 if ( ! empty($users) )
                 {
                     foreach ($users as $key => $value)
@@ -114,8 +132,12 @@ class Controller_Users extends Controller_Rest
                 }
                 else
                 {
-                    return $this->response(array('Login incorrecto' => 400));
+                    return $this->response(array(
+                        'code' => 400,
+                        'message' => 'Usuario y/o contraseña incorrectos'
+                        ));
                 }
+
                 if ($username == $input['username'] and $password == $input['password'])
                 {
                     $dataToken = array(
@@ -125,23 +147,20 @@ class Controller_Users extends Controller_Rest
                     );
                     $token = JWT::encode($dataToken, $this->key);
                     return $this->response(array(
-                        'Login Correcto' => 200,
-                        ['token' => $token, 'username' => $username]
+                        'code' => 200,
+                        'message'=> 'Login Correcto',
+                        'data' => ['token' => $token, 'username' => $username, 'image_profile' => 'alvaroiocld']
                 ));
                 }
-                else
-                {
-                return $this->response(array('Los datos no coinciden' => 400));
-                }
             }
-        catch (Exception $e)
-        {
-            $json = $this->response(array(
-                'code' => 500,
-                'message' => 'Error de servidor'
-                //'message' => $e->getMessage(),
-            ));
-            return $json;
-        }
-    }                
+            catch (Exception $e)
+            {
+                $json = $this->response(array(
+                    'code' => 500,
+                    'message' => 'Error de servidor'
+                    //'message' => $e->getMessage(),
+                ));
+                return $json;
+            }
+        }                
 }
