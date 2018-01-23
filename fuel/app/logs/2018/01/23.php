@@ -55,3 +55,22 @@ WARNING - 2018-01-23 09:27:20 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2018-01-23 09:28:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-23 17:50:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-23 17:50:25 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:43:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:43:37 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:45:37 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:48:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:48:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:48:43 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:48:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:49:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:50:14 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:50:45 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 18:51:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 19:06:32 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-23 19:06:33 --> Warning - array_merge(): Argument #2 is not an array in /var/www/html/Alumni/fuel/core/classes/asset.php on line 116
+WARNING - 2018-01-23 19:06:43 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-23 19:06:43 --> Warning - array_merge(): Argument #2 is not an array in /var/www/html/Alumni/fuel/core/classes/asset.php on line 116
+WARNING - 2018-01-23 19:07:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-23 19:07:03 --> Warning - array_merge(): Argument #2 is not an array in /var/www/html/Alumni/fuel/core/classes/asset.php on line 116
+WARNING - 2018-01-23 19:09:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-23 19:10:17 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

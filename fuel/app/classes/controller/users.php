@@ -119,7 +119,7 @@ class Controller_Users extends Controller_Rest
         return $json;
     }
 
-     public function get_usuarios()
+     public function get_users()
     {
         $users = Model_Users::find('all');
         return $this->response(Arr::reindex($users));
