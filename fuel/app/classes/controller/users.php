@@ -56,7 +56,7 @@ class Controller_Users extends Controller_Rest
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' =>  'Existen campos vacíos'
+                    'message' =>  'Existen campos vacios'
                 ));
                 return $json;
             }
@@ -69,17 +69,40 @@ class Controller_Users extends Controller_Rest
                 )
             ));
 
-            /*$input = $_POST;
-            $users = new Model_Users();
-            $users = Model_Users::find($_POST['email']);
-            $users->password = $input['password'];
-            $users->save();
+            if ( ! empty($users) )
+            {
+                foreach ($users as $key => $value)
+                {
+                    $id = $users[$key]->id;
+                    $email = $users[$key]->email;
+                }
+            }
+            else
+            {
+                return $this->response(array(
+                    'code' => 400,
+                    'message' => 'El email no es válido'
+                    ));
+            }
+
+            if ($email == $input['email'])
+            {
+                $json = $this->response(array(
+                    'code' => 200,
+                    'message' => 'Email válido',
+                    'data' => ['email' => $email]
+                ));
+                return $json;
+            }
+        }
+        catch (Exception $e)
+        {
             $json = $this->response(array(
-                'code' => 200,
-                'message' => 'Contraseña modificada',
-                'data' => ['Contraseña' => $input['password']]
+                'code' => 500,
+                'message' => 'Error de servidor'
+                //'message' => $e->getMessage(),
             ));
-            return $json;*/
+            return $json;
         }
     }
 
@@ -146,11 +169,11 @@ class Controller_Users extends Controller_Rest
                         "password" => $password
                     );
                     $token = JWT::encode($dataToken, $this->key);
-                    return $this->response(array(
-                        'code' => 200,
-                        'message'=> 'Login Correcto',
-                        'data' => ['token' => $token, 'username' => $username, 'image_profile' => 'alvaroiocld']
-                ));
+                        return $this->response(array(
+                            'code' => 200,
+                            'message'=> 'Login Correcto',
+                            'data' => ['token' => $token, 'username' => $username, 'image_profile' => 'alvaroiocld']
+                        ));
                 }
             }
             catch (Exception $e)
