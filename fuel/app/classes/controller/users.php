@@ -21,6 +21,17 @@ class Controller_Users extends Controller_Rest
                 return $json;
             }
 
+            // Mínimo caracteres
+            if (strlen($_POST['username']) < 4)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'El nombre debe contener cuatro caracteres minimo',
+                    'data' => []
+                ));
+                return $json;
+            }
+
             $input = $_POST;
             $user = new Model_Users();
             $user->username = $input['username'];
@@ -36,7 +47,6 @@ class Controller_Users extends Controller_Rest
                 'data' => $user
             ));
             return $json;
-
         } 
         catch (Exception $e) 
         {
@@ -48,7 +58,7 @@ class Controller_Users extends Controller_Rest
         }
     }
         
-    public function post_recoverPass()
+    public function post_emailValidate()
     {
         try {
 
@@ -56,7 +66,8 @@ class Controller_Users extends Controller_Rest
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' =>  'Existen campos vacios'
+                    'message' =>  'Email no introducido',
+                    'data' => []
                 ));
                 return $json;
             }
@@ -81,7 +92,7 @@ class Controller_Users extends Controller_Rest
             {
                 return $this->response(array(
                     'code' => 400,
-                    'message' => 'El email no es válido'
+                    'message' => 'El email no existe'
                     ));
             }
 
@@ -89,8 +100,8 @@ class Controller_Users extends Controller_Rest
             {
                 $json = $this->response(array(
                     'code' => 200,
-                    'message' => 'Email válido',
-                    'data' => ['email' => $email]
+                    'message' => 'El email existe',
+                    'data' => ['email' => $email, 'token' => $token]
                 ));
                 return $json;
             }
