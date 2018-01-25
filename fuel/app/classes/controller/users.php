@@ -34,12 +34,12 @@ class Controller_Users extends Controller_Base
 
             $input = $_POST;
             $user = new Model_Users();
-            $user->username = $input['username'];
-            $user->email = $input['email'];
-            $user->password = $input['password'];
-            $user->image_profile = 'alvaroiocld';
-            $user->id_rol = 2;
-            $user->id_list = 1;
+            $user->username = $input['username'],
+            $user->email = $input['email'],
+            $user->password = $input['password'],
+            $user->image_profile = 'alvaroiocld',
+            $user->id_rol = 2,
+            $user->id_list = 1,
             $user->save();
             $json = $this->response(array(
                 'code' => 200,

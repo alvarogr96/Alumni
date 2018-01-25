@@ -7,11 +7,7 @@ class Board
     {
         \DBUtil::create_table('board', array(
             'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-<<<<<<< HEAD:fuel/app/migrations/004_board.php
             'type' => array('type' => 'varchar', 'constraint' => 100),
-=======
-            'type' => array('type' => 'int', 'constraint' => 100),
->>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6:fuel/app/migrations/004_board.php
             'title' => array('type' => 'varchar', 'constraint' => 100),
             'description' => array('type' => 'varchar', 'constraint' => 100),
             'localization' => array('type' => 'varchar', 'constraint' => 100),

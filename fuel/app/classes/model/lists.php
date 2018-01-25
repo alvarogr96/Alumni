@@ -15,7 +15,7 @@ class Model_Lists extends Orm\Model
         'users' => array(
             'key_from' => 'id',
             'model_to' => 'Model_Users',
-            'key_to' => 'id_rol',
+            'key_to' => 'id_user',
             'cascade_save' => false,
             'cascade_delete' => false,
         )

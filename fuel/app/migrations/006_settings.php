@@ -31,6 +31,7 @@ class Settings
 
     function down()
     {
+      
        \DBUtil::drop_table('settings');
     }
 }
