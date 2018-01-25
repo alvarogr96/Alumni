@@ -38,5 +38,4 @@ protected static $_belongs_to = array(
             'cascade_delete' => false,
         )
     );
-
 }

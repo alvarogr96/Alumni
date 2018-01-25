@@ -12,6 +12,9 @@ class Roles
             
             
         ), array('id'));
+        \DB::query("INSERT INTO roles (id,type) VALUES ('1','admin');")->execute();
+        \DB::query("INSERT INTO roles (id,type) VALUES ('2','profesores');")->execute();
+        \DB::query("INSERT INTO roles (id,type) VALUES ('3','alumnos');")->execute();
     }
 
     function down()

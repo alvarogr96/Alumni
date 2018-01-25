@@ -2,7 +2,7 @@
 
 use Firebase\JWT\JWT;
 
-class Controller_Users extends Controller_Rest
+class Controller_Users extends Controller_Base
 {
 
     private $key = "dejr334irj3irji3r4j3rji3jiSj3jri";
@@ -17,6 +17,17 @@ class Controller_Users extends Controller_Rest
                 $json = $this->response(array(
                     'code' => 400,
                     'message' =>  'Falta algun campo'
+                ));
+                return $json;
+            }
+
+            // Mínimo caracteres
+            if (strlen($_POST['username']) < 4)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'El nombre debe contener cuatro caracteres minimo',
+                    'data' => []
                 ));
                 return $json;
             }
@@ -48,7 +59,7 @@ class Controller_Users extends Controller_Rest
         }
     }
         
-    public function post_recoverPass()
+    public function post_emailValidate()
     {
         try {
 
@@ -81,7 +92,7 @@ class Controller_Users extends Controller_Rest
             {
                 return $this->response(array(
                     'code' => 400,
-                    'message' => 'El email no es válido'
+                    'message' => 'El email no existe'
                     ));
             }
 
@@ -89,7 +100,7 @@ class Controller_Users extends Controller_Rest
             {
                 $json = $this->response(array(
                     'code' => 200,
-                    'message' => 'Email válido',
+                    'message' => 'Email existe',
                     'data' => ['email' => $email]
                 ));
                 return $json;
@@ -121,6 +132,8 @@ class Controller_Users extends Controller_Rest
 
      public function get_users()
     {
+        return $this->respuesta(500, 'trace');
+        exit;
         $users = Model_Users::find('all');
         return $this->response(Arr::reindex($users));
     }
