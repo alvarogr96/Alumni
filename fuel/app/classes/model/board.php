@@ -25,7 +25,11 @@ class Model_Board extends Orm\Model
         ),
         'id_user'
     );
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6
     protected static $_belongs_to = array(
         'users' => array(
             'key_from' => 'id_user',
@@ -33,6 +37,12 @@ class Model_Board extends Orm\Model
             'key_to' => 'id',
             'cascade_save' => false,
             'cascade_delete' => false,
+<<<<<<< HEAD
         )
     );
 }
+=======
+        ),
+    );
+}
+>>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6

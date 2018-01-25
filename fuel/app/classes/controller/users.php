@@ -47,7 +47,6 @@ class Controller_Users extends Controller_Base
                 'data' => $user
             ));
             return $json;
-
         } 
         catch (Exception $e) 
         {
@@ -67,7 +66,8 @@ class Controller_Users extends Controller_Base
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' =>  'Existen campos vacios'
+                    'message' =>  'Email no introducido',
+                    'data' => []
                 ));
                 return $json;
             }
@@ -100,8 +100,13 @@ class Controller_Users extends Controller_Base
             {
                 $json = $this->response(array(
                     'code' => 200,
+<<<<<<< HEAD
                     'message' => 'Email existe',
                     'data' => ['email' => $email]
+=======
+                    'message' => 'El email existe',
+                    'data' => ['email' => $email, 'token' => $token]
+>>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6
                 ));
                 return $json;
             }

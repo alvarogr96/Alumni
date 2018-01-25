@@ -36,7 +36,11 @@ class Users
 		        )
 		    )
 		);
+<<<<<<< HEAD
 		\DB::query("INSERT INTO users (id, username, email, password, image_profile, id_rol, id_list) VALUES (NULL,'admin', 'admin@cev.com', 'admin', 'null', '1','1');")->execute();
+=======
+		/*\DB::query("INSERT INTO users (id, username, email, password, image_profile, id_rol, id_list) VALUES (NULL, 'admin', 'admin@cev.com', 'admin', 'NULL', '1', '1');")->execute();*/
+>>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6
     }
     function down()
     {

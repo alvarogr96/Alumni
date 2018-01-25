@@ -1,19 +1,21 @@
-<?php
+<?
 
 use Firebase\JWT\JWT;
 
-class Controller_Board extends Controller_Base
+class Controller_Board extends Controller_Rest
 {
 	public function post_create()
 	{
-		/*$this->respuesta(500, 'trace');
-        exit;*/
-
-        try
+		try
 		{
-			if ( empty($_POST['type']) || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['localization']) || empty($_POST['destination']) || empty($_POST['link'])) 
+			if ( empty($_POST['type']) || empty($_POST['title']) || empty($_POST['description']) ) 
             {
-                $this->respuesta(400, 'Existen campos vacíos');
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' =>  'Existen campos vacíos',
+                    'data' => []
+                ));
+                return $json;
             }
 
             $input = $_POST;
@@ -21,13 +23,10 @@ class Controller_Board extends Controller_Base
             $user->type = $input['type'];
             $user->title = $input['title'];
             $user->description = $input['description'];
-            $user->localization = $input['localization'];
-            $user->destination = $input['destination'];
-            $user->link = $input['link'];
             $user->save();
             $json = $this->response(array(
                 'code' => 200,
-                'message' => 'Anuncio creado',
+                'message' => 'Evento creado',
                 'data' => $user
             ));
             return $json;
