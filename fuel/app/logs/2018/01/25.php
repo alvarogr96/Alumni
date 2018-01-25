@@ -50,3 +50,17 @@ WARNING - 2018-01-25 13:00:28 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2018-01-25 13:00:29 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-25 13:00:29 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-25 13:00:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:04:43 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-25 13:04:43 --> Error - syntax error, unexpected ',' in /var/www/html/Alumni/fuel/app/classes/controller/users.php on line 37
+WARNING - 2018-01-25 13:05:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-25 13:05:54 --> Error - syntax error, unexpected '<<' (T_SL), expecting ')' in /var/www/html/Alumni/fuel/app/classes/controller/users.php on line 103
+WARNING - 2018-01-25 13:06:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:07:04 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:07:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:07:58 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:09:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:09:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:10:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-25 13:10:28 --> Warning - array_merge(): Argument #2 is not an array in /var/www/html/Alumni/fuel/core/classes/asset.php on line 116
+WARNING - 2018-01-25 13:19:26 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-25 13:20:17 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

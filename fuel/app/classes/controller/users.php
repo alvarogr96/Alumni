@@ -34,12 +34,12 @@ class Controller_Users extends Controller_Base
 
             $input = $_POST;
             $user = new Model_Users();
-            $user->username = $input['username'],
-            $user->email = $input['email'],
-            $user->password = $input['password'],
-            $user->image_profile = 'alvaroiocld',
-            $user->id_rol = 2,
-            $user->id_list = 1,
+            $user->username = $input['username'];
+            $user->email = $input['email'];
+            $user->password = $input['password'];
+            $user->image_profile = 'alvaroiocld';
+            $user->id_rol = 2;
+            $user->id_list = 1;
             $user->save();
             $json = $this->response(array(
                 'code' => 200,
@@ -100,13 +100,8 @@ class Controller_Users extends Controller_Base
             {
                 $json = $this->response(array(
                     'code' => 200,
-<<<<<<< HEAD
                     'message' => 'Email existe',
                     'data' => ['email' => $email]
-=======
-                    'message' => 'El email existe',
-                    'data' => ['email' => $email, 'token' => $token]
->>>>>>> d9023047155a03ecc3dbe1c06d36ee3d2c653df6
                 ));
                 return $json;
             }
@@ -137,8 +132,8 @@ class Controller_Users extends Controller_Base
 
      public function get_users()
     {
-        return $this->respuesta(500, 'trace');
-        exit;
+        /*return $this->respuesta(500, 'trace');
+        exit;*/
         $users = Model_Users::find('all');
         return $this->response(Arr::reindex($users));
     }
