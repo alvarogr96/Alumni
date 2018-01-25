@@ -85,6 +85,7 @@ class Controller_Users extends Controller_Base
                 foreach ($users as $key => $value)
                 {
                     $id = $users[$key]->id;
+                    $username = $users[$key]->username;
                     $email = $users[$key]->email;
                 }
             }
@@ -98,10 +99,18 @@ class Controller_Users extends Controller_Base
 
             if ($email == $input['email'])
             {
+                $tokendata = array(
+                    "id" => $id,
+                    "username" => $username,
+                    "email" => $email
+                );
+
+                $token = JWT::encode($tokendata, $this->key);
+
                 $json = $this->response(array(
                     'code' => 200,
                     'message' => 'Email existe',
-                    'data' => ['email' => $email]
+                    'data' => ['token' => $token]
                 ));
                 return $json;
             }
@@ -110,8 +119,62 @@ class Controller_Users extends Controller_Base
         {
             $json = $this->response(array(
                 'code' => 500,
-                'message' => 'Error de servidor'
-                //'message' => $e->getMessage(),
+                'message' => $e->getMessage()
+            ));
+            return $json;
+        }
+    }
+
+    public function post_recoverPass()
+    {
+        try 
+        {
+            if ( empty($_POST['newpass']) || empty($_POST['repeatPass'])) 
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' =>  'Existen campos vacíos',
+                    'data' => []
+                ));
+                return $json;
+            }
+
+            if(($_POST['newpass']) == ($_POST['repeatPass']))
+            {
+                $user = Model_Users::find('all');
+                $user->password = $input['newpass'];
+                $user->save();
+
+                /*$input = $_POST;
+                $user = Model_Users::find('all', array(
+                    'where' => array(
+                        array('password', $input['newpass'])
+                    )
+                ));
+                $user->save();*/
+
+                $json = $this->response(array(
+                    'code' => 200,
+                    'message' =>  'Contraseña cambiada',
+                    'data' => []
+                ));
+                return $json;
+            }   
+            else
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' =>  'Los campos no coinciden',
+                    'data' => []
+                ));
+                return $json;
+            }
+        }
+        catch (Exception $e)
+        {
+            $json = $this->response(array(
+                'code' => 500,
+                'message' => $e->getMessage()
             ));
             return $json;
         }
