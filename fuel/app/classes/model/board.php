@@ -5,9 +5,6 @@ class Model_Board extends Orm\Model
     protected static $_primary_key = array('id');
     protected static $_properties = array(
         'id', // both validation & typing observers will ignore the PK
-        'type' => array(
-            'data_type' => 'varchar'   
-        ),
         'title' => array(
             'data_type' => 'varchar'   
         ),
@@ -23,13 +20,21 @@ class Model_Board extends Orm\Model
         'link' => array(
             'data_type' => 'varchar'   
         ),
-        'id_user'
+        'id_user',
+        'id_type'
     );
 
     protected static $_belongs_to = array(
         'users' => array(
             'key_from' => 'id_user',
             'model_to' => 'Model_Users',
+            'key_to' => 'id',
+            'cascade_save' => false,
+            'cascade_delete' => false,
+        ),
+        'types' => array(
+            'key_from' => 'id_type',
+            'model_to' => 'Model_types',
             'key_to' => 'id',
             'cascade_save' => false,
             'cascade_delete' => false,

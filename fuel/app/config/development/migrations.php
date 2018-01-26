@@ -9,9 +9,10 @@ return array(
         0 => '001_lists',
         1 => '002_roles',
         2 => '003_users',
-        3 => '004_board',
-        4 => '005_messages',
-        5 => '006_settings',
+        3 => '004_types',
+        4 => '005_board',
+        5 => '006_messages',
+        6 => '007_settings',
       ),
     ),
     'module' => 
