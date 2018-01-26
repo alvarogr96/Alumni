@@ -17,8 +17,8 @@ class Model_Board extends Orm\Model
         'localization' => array(
             'data_type' => 'varchar'   
         ),
-        'destination' => array(
-            'data_type' => 'varchar'   
+        'group' => array(
+            'data_type' => 'int'   
         ),
         'link' => array(
             'data_type' => 'varchar'   

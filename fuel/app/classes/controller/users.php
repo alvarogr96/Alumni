@@ -125,10 +125,18 @@ class Controller_Users extends Controller_Base
         }
     }
 
-    public function post_recoverPass()
+    public function post_changePass()
     {
         try 
         {
+            $header = apache_request_headers();
+            if (isset($header['Authorization'])) 
+            {
+                $token = $header['Authorization'];
+                $dataJwtUser = JWT::decode($token, $this->key, array('HS256'));
+            }
+
+
             if ( empty($_POST['newpass']) || empty($_POST['repeatPass'])) 
             {
                 $json = $this->response(array(
@@ -141,18 +149,12 @@ class Controller_Users extends Controller_Base
 
             if(($_POST['newpass']) == ($_POST['repeatPass']))
             {
-                $user = Model_Users::find('all');
+                $input = $_POST;
+                $user = Model_Users::find($dataJwtUser->id);
                 $user->password = $input['newpass'];
+               
                 $user->save();
-
-                /*$input = $_POST;
-                $user = Model_Users::find('all', array(
-                    'where' => array(
-                        array('password', $input['newpass'])
-                    )
-                ));
-                $user->save();*/
-
+                                
                 $json = $this->response(array(
                     'code' => 200,
                     'message' =>  'Contraseña cambiada',

@@ -11,7 +11,7 @@ class Board
             'title' => array('type' => 'varchar', 'constraint' => 100),
             'description' => array('type' => 'varchar', 'constraint' => 100),
             'localization' => array('type' => 'varchar', 'constraint' => 100),
-            'destination' => array('type' => 'varchar', 'constraint' => 100),
+            'group' => array('type' => 'int', 'constraint' => 100),
             'link' => array('type' => 'varchar', 'constraint' => 100),
             'id_user' => array('type' => 'int', 'constraint' => 11, 'null' => true),
         ), array('id'), false, 'InnoDB', 'utf8_unicode_ci',
