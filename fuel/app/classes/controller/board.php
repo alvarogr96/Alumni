@@ -11,25 +11,24 @@ class Controller_Board extends Controller_Rest
         return $this->response(Arr::reindex($types));
     }
 
-    public function post_chooseType()
-    {
-        $input = $_POST;
-        $board = new Model_Board();
-        
-        $board->save();
-        $json = $this->response(array(
-                'code' => 200,
-                'message' => 'Tipo seleccionado',
-                'data' => $board
-        ));
-        return $json;
-    }
-
 	public function post_create()
 	{
 		try
 		{   
-            /*hacer metodo validar token para poder usarlo en cada enpoint*/
+            /*hacer metodo validar token para poder usarlo en cada endpoint*/
+            $header = apache_request_headers();
+            try
+            {
+                $this->tokenValidate($header);
+            }
+            catch
+            {
+                $json = $this->response(array(
+                    'code' => 500,
+                    'message' => $e->getMessage()
+                ));
+                return $json;
+            }
 
 			if ( empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) )
             {
@@ -68,4 +67,25 @@ class Controller_Board extends Controller_Rest
             return $json;
 		}
 	}
+
+    public function tokenValidate()
+    {
+        $dataJwtUser = JWT::decode($token, $this->key, array('HS256'));
+
+        $users = Model_Users::find('all', array(
+            'where' => array(
+                array('id', $id),
+                array ('username', $username),
+                array('password', $password)
+            )
+        ));
+        if ($users != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
