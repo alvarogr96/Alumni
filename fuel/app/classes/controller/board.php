@@ -16,21 +16,21 @@ class Controller_Board extends Controller_Rest
 		try
 		{   
             /*hacer metodo validar token para poder usarlo en cada endpoint*/
-            $header = apache_request_headers();
+            /*$header = apache_request_headers();
             try
             {
                 $this->tokenValidate($header);
             }
-            catch
+            catch (Exception $e)
             {
                 $json = $this->response(array(
                     'code' => 500,
                     'message' => $e->getMessage()
                 ));
                 return $json;
-            }
+            }*/
 
-			if ( empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) )
+			if ( empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) || empty($_POST['localization']) || empty($_POST['link']) || empty($_POST['id_type']) )
             {
                 $json = $this->response(array(
                     'code' => 400,
@@ -43,12 +43,12 @@ class Controller_Board extends Controller_Rest
             {
                 $input = $_POST;
                 $board = new Model_Board();
-                $board->id_type = $input['id_type'];
                 $board->title = $input['title'];
                 $board->description = $input['description'];
                 $board->group = $input['group'];
                 $board->localization = $input['localization'];
                 $board->link = $input['link'];
+                $board->id_type = $input['id_type'];
                 $board->save();
                 $json = $this->response(array(
                     'code' => 200,
