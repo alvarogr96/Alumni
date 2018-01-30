@@ -23,3 +23,9 @@ WARNING - 2018-01-30 08:53:46 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2018-01-30 08:53:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-30 08:54:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-01-30 08:54:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-30 09:18:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-30 09:26:01 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-30 09:44:32 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-01-30 09:50:45 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-01-30 09:50:45 --> Error - syntax error, unexpected ',' in /var/www/html/Alumni/fuel/app/classes/controller/users.php on line 45
+WARNING - 2018-01-30 09:52:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.

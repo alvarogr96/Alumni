@@ -32,6 +32,26 @@ class Controller_Users extends Controller_Base
                 return $json;
             }
 
+            if (strlen($_POST['password']) < 5)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'La contraseña tiene que tener al menos 5 caracteres',
+                    'data' => []
+                ));
+                return $json;
+            }
+
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL ) == false)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'La dirección de correo no es valida',
+                    'data' => []
+                ));
+                return $json;
+            }
+
             $input = $_POST;
             $user = new Model_Users();
             $user->username = $input['username'];
