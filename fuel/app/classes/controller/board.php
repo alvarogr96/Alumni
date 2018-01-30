@@ -4,6 +4,7 @@ use Firebase\JWT\JWT;
 
 class Controller_Board extends Controller_Rest
 {
+    private $key = "dejr334irj3irji3r4j3rji3jiSj3jri";
 
     public function get_types()
     {
@@ -16,10 +17,10 @@ class Controller_Board extends Controller_Rest
 		try
 		{   
             /*hacer metodo validar token para poder usarlo en cada endpoint*/
-            /*$header = apache_request_headers();
+            
             try
             {
-                $this->tokenValidate($header);
+                $this->tokenValidate();
             }
             catch (Exception $e)
             {
@@ -28,7 +29,7 @@ class Controller_Board extends Controller_Rest
                     'message' => $e->getMessage()
                 ));
                 return $json;
-            }*/
+            }
 
             if (($_POST['id_type']) > 4 || ($_POST['id_type']) < 1 )
             {
@@ -50,7 +51,7 @@ class Controller_Board extends Controller_Rest
                 return $json;
             }
 
-			if ( empty($_POST['id_type']) || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) || empty($_POST['localization']) || empty($_POST['link']) )
+			if ( empty($_POST['id_type']) || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) )
             {
                 $json = $this->response(array(
                     'code' => 400,
@@ -67,8 +68,18 @@ class Controller_Board extends Controller_Rest
                 $board->title = $input['title'];
                 $board->description = $input['description'];
                 $board->group = $input['group'];
-                $board->localization = $input['localization'];
-                $board->link = $input['link'];
+
+                /* Isset de localization y link*/
+
+                if (isset($input['localization']))
+                {
+                    $board->localization = $input['localization'];
+                }
+                if (isset($input['link']))
+                {
+                    $board->link = $input['link'];
+                }
+
                 $board->save();
                 $json = $this->response(array(
                     'code' => 200,
@@ -90,16 +101,18 @@ class Controller_Board extends Controller_Rest
 
     public function tokenValidate()
     {
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
         $dataJwtUser = JWT::decode($token, $this->key, array('HS256'));
 
         $users = Model_Users::find('all', array(
             'where' => array(
-                array('id', $id),
-                array ('username', $username),
-                array('password', $password)
+                array('username', $dataJwtUser->username),
+                array('password', $dataJwtUser->password)
             )
         ));
-        if ($users != null)
+
+        if (empty($users))
         {
             return true;
         }
