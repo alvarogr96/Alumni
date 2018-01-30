@@ -17,7 +17,6 @@ class Controller_Board extends Controller_Rest
 		try
 		{   
             /*hacer metodo validar token para poder usarlo en cada endpoint*/
-            
             try
             {
                 $this->tokenValidate();
@@ -51,6 +50,20 @@ class Controller_Board extends Controller_Rest
                 return $json;
             }
 
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $group = $_POST['group'];
+
+            if($this->isBoardCreated($title, $description, $group))
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'Este anuncio ya existe',
+                    'data' => []
+                ));
+                return $json;
+            }
+
 			if ( empty($_POST['id_type']) || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) )
             {
                 $json = $this->response(array(
@@ -69,7 +82,7 @@ class Controller_Board extends Controller_Rest
                 $board->description = $input['description'];
                 $board->group = $input['group'];
 
-                /* Isset de localization y link*/
+                /* isset de localization y link*/
 
                 if (isset($input['localization']))
                 {
@@ -81,6 +94,7 @@ class Controller_Board extends Controller_Rest
                 }
 
                 $board->save();
+
                 $json = $this->response(array(
                     'code' => 200,
                     'message' => 'Anuncio realizado',
@@ -126,5 +140,25 @@ class Controller_Board extends Controller_Rest
     {
         $board = Model_Board::find('all');
         return $this->response(Arr::reindex($board));
+    }
+
+    public function isBoardCreated($title, $description, $group)
+    {
+        $board = Model_Board::find('all', array(
+            'where' => array(
+                array('title', $title),
+                array('description', $description),
+                array('group', $group)
+            )
+        ));
+
+        if($board != null)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
 }

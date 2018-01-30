@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 
 use Firebase\JWT\JWT;
 
@@ -21,12 +21,26 @@ class Controller_Users extends Controller_Base
                 return $json;
             }
 
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
             // Mínimo caracteres
             if (strlen($_POST['username']) < 4)
             {
                 $json = $this->response(array(
                     'code' => 400,
                     'message' => 'El nombre debe contener cuatro caracteres minimo',
+                    'data' => []
+                ));
+                return $json;
+            }
+
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL ) == false)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'La dirección de correo no es valida',
                     'data' => []
                 ));
                 return $json;
@@ -42,11 +56,11 @@ class Controller_Users extends Controller_Base
                 return $json;
             }
 
-            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL ) == false)
+            if($this->isUserCreated($username, $email))
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' => 'La dirección de correo no es valida',
+                    'message' => 'Nombre y/o email ya están registrados',
                     'data' => []
                 ));
                 return $json;
@@ -223,6 +237,24 @@ class Controller_Users extends Controller_Base
         return $this->response(Arr::reindex($users));
     }
 
+    public function isUserCreated($username, $email)
+    {
+        $users = Model_Users::find('all', array(
+            'where' => array(
+                array('username', $username),
+                array('email', $email)
+            )
+        ));
+        
+        if($users != null){
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
     public function get_login()
     { 
         try {
@@ -267,18 +299,20 @@ class Controller_Users extends Controller_Base
                         "password" => $password
                     );
                     $token = JWT::encode($dataToken, $this->key);
-                        return $this->response(array(
-                            'code' => 200,
-                            'message'=> 'Login Correcto',
-                            'data' => ['token' => $token, 'username' => $username, 'image_profile' => 'alvaroiocld']
-                        ));
+              
+                    return $this->response(array(
+                        'code' => 200,
+                        'message'=> 'Login Correcto',
+                        'data' => ['token' => $token, 'username' => $username, 'image_profile' => 'alvaroiocld']
+                    ));
                 }
             }
             catch (Exception $e)
             {
                 $json = $this->response(array(
                     'code' => 500,
-                    'message' => 'Error de servidor'
+                    'message' => 'Error de servidor',
+                    'data' => []
                     //'message' => $e->getMessage(),
                 ));
                 return $json;
