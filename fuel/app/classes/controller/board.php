@@ -16,7 +16,6 @@ class Controller_Board extends Controller_Rest
 	{
 		try
 		{   
-            /*hacer metodo validar token para poder usarlo en cada endpoint*/
             try
             {
                 $this->tokenValidate();
@@ -25,7 +24,8 @@ class Controller_Board extends Controller_Rest
             {
                 $json = $this->response(array(
                     'code' => 500,
-                    'message' => $e->getMessage()
+                    'message' => $e->getMessage(),
+                    'data' => []
                 ));
                 return $json;
             }
@@ -62,7 +62,7 @@ class Controller_Board extends Controller_Rest
                     'data' => []
                 ));
                 return $json;
-            }
+            } 
 
 			if ( empty($_POST['id_type']) || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['group']) )
             {

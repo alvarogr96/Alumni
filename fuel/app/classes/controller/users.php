@@ -170,7 +170,6 @@ class Controller_Users extends Controller_Base
                 $dataJwtUser = JWT::decode($token, $this->key, array('HS256'));
             }
 
-
             if ( empty($_POST['newpass']) || empty($_POST['repeatPass'])) 
             {
                 $json = $this->response(array(
@@ -210,7 +209,8 @@ class Controller_Users extends Controller_Base
         {
             $json = $this->response(array(
                 'code' => 500,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'data' => []
             ));
             return $json;
         }
@@ -263,7 +263,8 @@ class Controller_Users extends Controller_Base
                 {
                     return $this->response(array(
                         'code' => 400,
-                        'message' => 'Existen campos vacíos'
+                        'message' => 'Existen campos vacíos',
+                        'data' => []
                     ));
                 }
 
@@ -287,7 +288,8 @@ class Controller_Users extends Controller_Base
                 {
                     return $this->response(array(
                         'code' => 400,
-                        'message' => 'Usuario y/o contraseña incorrectos'
+                        'message' => 'Usuario y/o contraseña incorrectos',
+                        'data' => []
                         ));
                 }
 
@@ -311,9 +313,8 @@ class Controller_Users extends Controller_Base
             {
                 $json = $this->response(array(
                     'code' => 500,
-                    'message' => 'Error de servidor',
+                    'message' => $e->getMessage(),
                     'data' => []
-                    //'message' => $e->getMessage(),
                 ));
                 return $json;
             }
