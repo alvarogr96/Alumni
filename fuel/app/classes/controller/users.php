@@ -7,6 +7,65 @@ class Controller_Users extends Controller_Base
 
     private $key = "dejr334irj3irji3r4j3rji3jiSj3jri";
 
+ public function post_preCreate()
+    {
+        try {
+            
+            if ( empty($_POST['email']) || empty($_POST['username'])) 
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' =>  'Campo vacio'
+                ));
+                return $json;
+            }
+
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+
+
+            if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL ) == false)
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'La dirección de correo no es valida',
+                    'data' => []
+                ));
+                return $json;
+            }
+
+            if($this->isUserCreated($email))
+            {
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'Email ya registrado',
+                    'data' => []
+                ));
+                return $json;
+            }
+
+            $input = $_POST;
+            $user = new Model_Users();
+            $user->username = $input['username'];
+            $user->email = $input['email'];
+            $user->active = 1;
+            $user->save();
+            $json = $this->response(array(
+                'code' => 200,
+                'message' => 'Usuario creado',
+                'data' => $user
+            ));
+            return $json;
+        } 
+        catch (Exception $e) 
+        {
+            $json = $this->response(array(
+                'code' => 500,
+                'message' => $e->getMessage()
+            ));
+            return $json;
+        }
+    }
 
     public function post_create()
     {
@@ -56,11 +115,11 @@ class Controller_Users extends Controller_Base
                 return $json;
             }
 
-            if($this->isUserCreated($username, $email))
+            if($this->isUserCreated($email))
             {
                 $json = $this->response(array(
                     'code' => 400,
-                    'message' => 'Nombre y/o email ya están registrados',
+                    'message' => 'Email ya están registrados',
                     'data' => []
                 ));
                 return $json;
@@ -71,7 +130,8 @@ class Controller_Users extends Controller_Base
             $user->username = $input['username'];
             $user->email = $input['email'];
             $user->password = $input['password'];
-            $user->image_profile = 'alvaroiocld';
+            $user->active = 1;
+           // $user->image_profile = 'alvaroiocld';
             $user->id_rol = 2;
             $user->id_list = 1;
             $user->save();
@@ -237,11 +297,10 @@ class Controller_Users extends Controller_Base
         return $this->response(Arr::reindex($users));
     }
 
-    public function isUserCreated($username, $email)
+    public function isUserCreated($email)
     {
         $users = Model_Users::find('all', array(
             'where' => array(
-                array('username', $username),
                 array('email', $email)
             )
         ));

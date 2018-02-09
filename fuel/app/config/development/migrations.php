@@ -13,6 +13,8 @@ return array(
         4 => '005_board',
         5 => '006_messages',
         6 => '007_settings',
+        7 => '008_belong',
+        8 => '009_assign',
       ),
     ),
     'module' => 
