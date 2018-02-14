@@ -135,10 +135,15 @@ class Controller_Users extends Controller_Base
             $user->id_rol = 2;
             $user->id_list = 1;
             $user->save();
+            $dataToken = array(
+                        "username" => $username,
+                        "password" => $password
+                    );
+                    $token = JWT::encode($dataToken, $this->key);
             $json = $this->response(array(
                 'code' => 200,
                 'message' => 'Usuario creado',
-                'data' => $user
+                'data' => $token
             ));
             return $json;
         } 
