@@ -56,6 +56,13 @@ class Controller_Lists extends Controller_Rest
             return $json;
         }
     }
+     public function get_lists()
+    {
+        /*return $this->respuesta(500, 'trace');
+        exit;*/
+        $lists = Model_Lists::find('all');
+        return $this->response(Arr::reindex($lists));
+    }
 
         public function isListCreated($title)
     {
@@ -73,4 +80,5 @@ class Controller_Lists extends Controller_Rest
             return true;
         }
     }
+
 }
