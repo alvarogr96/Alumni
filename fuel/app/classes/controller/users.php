@@ -382,5 +382,15 @@ class Controller_Users extends Controller_Base
                 ));
                 return $json;
             }
-        }                
+        } 
+
+       /*  public function get_data_users()
+    {
+        
+        $users = Model_Users::find('all');
+        return $this->response(Arr::reindex($users));
+    }  */
+    public function post_modify_profile(){
+        
+    }             
 }
