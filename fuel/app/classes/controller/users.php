@@ -10,6 +10,8 @@ class Controller_Users extends Controller_Base
  public function post_preCreate()
     {
         try {
+
+           
             
             if ( empty($_POST['email']) || empty($_POST['username'])) 
             {
@@ -49,6 +51,7 @@ class Controller_Users extends Controller_Base
             $user->username = $input['username'];
             $user->email = $input['email'];
             $user->active = 1;
+            $user->id_rol = 2;
             $user->save();
             $json = $this->response(array(
                 'code' => 200,
@@ -70,7 +73,10 @@ class Controller_Users extends Controller_Base
     public function post_create()
     {
         try {
-            
+
+            $user = new Model_Users();
+            if ($user->active == 1){
+
             if ( empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) ) 
             {
                 $json = $this->response(array(
@@ -130,7 +136,6 @@ class Controller_Users extends Controller_Base
             $user->username = $input['username'];
             $user->email = $input['email'];
             $user->password = $input['password'];
-            $user->active = 1;
            // $user->image_profile = 'alvaroiocld';
             $user->id_rol = 2;
             $user->id_list = 1;
@@ -146,6 +151,15 @@ class Controller_Users extends Controller_Base
                 'data' => $token
             ));
             return $json;
+        }else{
+
+            $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'Usuario no existente',
+                    'data' => []
+                ));
+                return $json;
+        }
         } 
         catch (Exception $e) 
         {

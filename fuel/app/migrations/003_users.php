@@ -8,7 +8,7 @@ class Users
             'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
             'username' => array('type' => 'varchar', 'constraint' => 100),
             'email' => array('type' => 'varchar', 'constraint' => 100),
-            'password' => array('type' => 'varchar', 'constraint' => 100),
+            'password' => array('type' => 'varchar', 'constraint' => 100, 'null' => true),
             'active' => array('type' => 'int', 'constraint' => 1),
             'image_profile' => array('type' => 'varchar', 'constraint' => 100, 'null' => true),
             'id_rol' => array('type' => 'int', 'constraint' => 11),
