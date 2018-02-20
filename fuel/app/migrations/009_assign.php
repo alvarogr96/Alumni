@@ -36,6 +36,6 @@ class Assign
 
     function down()
     {
-       \DBUtil::drop_table('Assign');
+       \DBUtil::drop_table('assign');
     }
 }

@@ -316,11 +316,28 @@ class Controller_Users extends Controller_Base
         return $this->response(Arr::reindex($users));
     }
 
-    public function isUserCreated($email)
+    public function isEmailCreated($email)
     {
         $users = Model_Users::find('all', array(
             'where' => array(
                 array('email', $email)
+            )
+        ));
+        
+        if($users != null){
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+
+     public function isUserCreated($username)
+    {
+        $users = Model_Users::find('all', array(
+            'where' => array(
+                array('username', $username)
             )
         ));
         
