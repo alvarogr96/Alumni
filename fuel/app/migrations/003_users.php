@@ -6,7 +6,7 @@ class Users
     {
         \DBUtil::create_table('users', array(
             'id' => array('type' => 'int', 'constraint' => 11, 'auto_increment' => true),
-            'username' => array('type' => 'varchar', 'constraint' => 100),
+            'username' => array('type' => 'varchar', 'constraint' => 100, 'null' => true),
             'email' => array('type' => 'varchar', 'constraint' => 100),
             'password' => array('type' => 'varchar', 'constraint' => 100, 'null' => true),
             'active' => array('type' => 'int', 'constraint' => 1),
@@ -26,7 +26,7 @@ class Users
 		        ),
 		    )
 		);
-		\DB::query("INSERT INTO users (id, username, email, password,active, image_profile, id_rol) VALUES (NULL, 'admin', 'admin@cev.com', 'admin','0', 'NULL', '1');")->execute();
+		\DB::query("INSERT INTO users (id, username, email, password,active, id_rol) VALUES (NULL, 'admin', 'admin@cev.com', 'admin','1', '1');")->execute();
     }
     function down()
     {
