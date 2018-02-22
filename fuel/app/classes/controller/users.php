@@ -420,12 +420,17 @@ class Controller_Users extends Controller_Base
             }
         } 
 
-       /*  public function get_data_users()
+        public function get_data_users()
     {
         
-        $users = Model_Users::find('all');
+        $users = Model_Users::find('id');
         return $this->response(Arr::reindex($users));
-    }  */
+     
+        
+        
+        
+    }
+    
     public function post_modify_profile(){
        
         try {
@@ -457,7 +462,7 @@ class Controller_Users extends Controller_Base
                     $user->save();
                     $user->username = $input['username'];
                     $user->email = $input['email'];
-                    $user->email = $input['description'];
+                    $user->description = $input['description'];
                     
                     
                
@@ -482,4 +487,40 @@ class Controller_Users extends Controller_Base
         }
     }            
 
+
+   /* public function post_upload()
+    {
+       
+        // Custom configuration for this upload
+        $config = array(
+            'path' => DOCROOT . 'assets/img',
+            'randomize' => true,
+            'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+        );
+        // process the uploaded files in $_FILES
+        Upload::process($config);
+        // if there are any valid files
+        if (Upload::is_valid())
+        {
+            // save them according to the config
+            Upload::save();
+            foreach(Upload::get_files() as $file)
+            {
+                $image = new Model_Users();
+                $image->image_profile = $file;
+                $image->save();
+            }
+        }
+        // and process any errors
+        foreach (Upload::get_errors() as $file)
+        {
+            return $this->response(array(
+                'code' => 500,
+            ));
+        }
+        return $this->response(array(
+            'code' => 200,
+        ));
+        
+    }*/
 }

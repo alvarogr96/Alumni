@@ -30,3 +30,75 @@ WARNING - 2018-02-22 13:46:15 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2018-02-22 13:46:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-02-22 13:47:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2018-02-22 13:47:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:51:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 16:51:11 --> Error - syntax error, unexpected ';', expecting ')' in /var/www/html/Alumni/fuel/app/config/development/db.php on line 24
+WARNING - 2018-02-22 16:51:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:53:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:54:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:55:06 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:55:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:55:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:57:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:57:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 16:57:58 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:00:05 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:00:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:05:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:06:46 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:06:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:07:09 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:07:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:37 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:37 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:08:38 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:09:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:10:30 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:10:34 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:10:43 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:50 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:11:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:12:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:12:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:12:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:12:16 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:12:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:14:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:14:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:15:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:16:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:16:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:17:19 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:17:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:17:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:17:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:39:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 17:39:54 --> Error - syntax error, unexpected 'class' (T_CLASS), expecting function (T_FUNCTION) in /var/www/html/Alumni/fuel/app/classes/controller/users.php on line 485
+WARNING - 2018-02-22 17:41:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:44:41 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 17:48:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 17:48:00 --> Error - No uploaded files were found. Did you specify "enctype" in your &lt;form&gt; tag? in /var/www/html/Alumni/fuel/vendor/fuelphp/upload/src/Upload.php on line 92
+WARNING - 2018-02-22 18:01:03 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 18:01:03 --> Error - syntax error, unexpected '.' in /var/www/html/Alumni/fuel/app/classes/controller/users.php on line 465
+WARNING - 2018-02-22 18:01:35 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 18:01:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2018-02-22 18:08:47 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 18:08:48 --> Warning - array_merge(): Argument #1 is not an array in /var/www/html/Alumni/fuel/core/classes/arr.php on line 1104
+WARNING - 2018-02-22 18:09:44 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 18:09:44 --> Warning - array_merge(): Argument #1 is not an array in /var/www/html/Alumni/fuel/core/classes/arr.php on line 1104
+WARNING - 2018-02-22 18:09:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2018-02-22 18:09:55 --> Warning - array_merge(): Argument #1 is not an array in /var/www/html/Alumni/fuel/core/classes/arr.php on line 1104
