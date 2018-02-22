@@ -123,67 +123,63 @@ class Controller_Users extends Controller_Base
             if($this->isEmailCreated($email))
             {
                 
-                
-
+               /*  if($this->isEmailCreated($email))
+                {
+                    $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'El usuario ya esta registrado',
+                    'data' => []
+                ));
+                return $json;
+                }*/
                 $user = Model_Users::find('first', array(
                    'where' => array(
                        array('email', $email)
                        ),
                    ));
 
-                $input = $_POST;
+                if ($user->active != 1){
+                    
+                    $input = $_POST;
                 
-                $user->username = $input['username'];
-                $user->email = $input['email'];
-                $user->password = $input['password'];
-                $user->active = 1;
-                $user->save();
-                $dataToken = array(
-                      "username" => $username,
-                      "password" => $password
+                    $user->username = $input['username'];
+                    $user->email = $input['email'];
+                    $user->password = $input['password'];
+                    $user->active = 1;
+                    $user->save();
+                    $dataToken = array(
+                        "username" => $username,
+                        "password" => $password
                      );
-                $token = JWT::encode($dataToken, $this->key);
-                $json = $this->response(array(
-                    'code' => 200,
-                    'message' => 'Usuario creado',
-                    'data' => $token
-                ));
+                    $token = JWT::encode($dataToken, $this->key);
+                    $json = $this->response(array(
+                        'code' => 200,
+                        'message' => 'Usuario creado',
+                        'data' => $token
+                    ));
           
-            return $json;
-            }
-            else
-            { 
-            //Si el email no es valido ( no esta en la bbdd o ya esta registrado )
-                $json = $this->response(array(
+                    return $json;
+                } else {
+
+                    $json = $this->response(array(
                     'code' => 400,
-                    'message' => 'El email no existe o ya esta registrado',
+                    'message' => 'El usuario ya esta registrado',
                     'data' => []
                 ));
                 return $json;
-            } 
-            
 
-           // $input = $_POST;
-           // $user = new Model_Users();
-           // $user->username = $input['username'];
-           // $user->email = $input['email'];
-           // $user->password = $input['password'];
-           // $user->image_profile = 'alvaroiocld';
-           // $user->active = 1;
-           // $user->id_rol = 2;
-           // $user->save();
-           // $dataToken = array(
-             //           "username" => $username,
-             //           "password" => $password
-             //      );
-           //         $token = JWT::encode($dataToken, $this->key);
-           // $json = $this->response(array(
-             //   'code' => 200,
-             //   'message' => 'Usuario creado',
-             //   'data' => $token
-           // ));
-           // return $json;
-        
+                }
+             } else
+              { 
+            //Si el email no es valido ( no esta en la bbdd o ya esta registrado )
+                $json = $this->response(array(
+                    'code' => 400,
+                    'message' => 'El email no esta registrado',
+                    'data' => []
+                ));
+                return $json;
+             } 
+   
         } 
         catch (Exception $e) 
         {
