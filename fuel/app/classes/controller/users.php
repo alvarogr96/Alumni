@@ -427,6 +427,59 @@ class Controller_Users extends Controller_Base
         return $this->response(Arr::reindex($users));
     }  */
     public function post_modify_profile(){
-        
-    }             
+       
+        try {
+            $header = apache_request_headers();
+            if (isset($header['Authorization'])) 
+                {
+                    $token = $header['Authorization'];
+                    $dataJwtUser = JWT::decode($token, $this->key, array('HS256'));
+                }
+            if (empty($_POST['username'])|| empty($_POST['email'])|| empty($_POST['description'])) 
+                {
+                    $json = $this->response(array(
+                        'code' => 400,
+                        'message' =>  'Hay campos vacios',
+                        'data' => []
+                    ));
+                    return $json;
+                }
+                    $input = $_POST;
+                    
+                   
+                    $user = Model_Users::find($dataJwtUser->id);
+                    $user->username = '';
+                    $user->email = '';
+                    $user->description = '';
+                    
+                    
+               
+                    $user->save();
+                    $user->username = $input['username'];
+                    $user->email = $input['email'];
+                    $user->email = $input['description'];
+                    
+                    
+               
+                    $user->save();
+                                
+                    $json = $this->response(array(
+                        'code' => 200,
+                        'message' =>  'Perfil modificado',
+                        'data' => []
+                ));
+                return $json;
+                
+        } catch (Exception $e) {
+            if($e->getCode() == 23000)
+            {
+                return $this->response(array(
+                    'code' => 500,
+                    'message' => $e->getMessage(),
+                    'data' => []
+                    ));
+            }
+        }
+    }            
+
 }
